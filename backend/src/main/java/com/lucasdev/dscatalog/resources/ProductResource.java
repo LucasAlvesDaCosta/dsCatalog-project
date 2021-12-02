@@ -16,30 +16,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.lucasdev.dscatalog.dto.CategoryDTO;
-import com.lucasdev.dscatalog.services.CategoryService;
+import com.lucasdev.dscatalog.dto.ProductDTO;
+import com.lucasdev.dscatalog.services.ProductService;
 
 @RestController
-@RequestMapping(value = "/categories")
-public class CategoryResouce {
+@RequestMapping(value = "/products")
+public class ProductResource {
 
 	@Autowired
-	private CategoryService service;
+	private ProductService service;
 	
 	@GetMapping
-	public ResponseEntity<Page<CategoryDTO>> findAll(Pageable pageable) {
-		Page<CategoryDTO> pagelist = service.findAllPaged(pageable);
+	public ResponseEntity<Page<ProductDTO>> findAll(Pageable pageable) {
+		Page<ProductDTO> pagelist = service.findAllPaged(pageable);
 		return ResponseEntity.ok().body(pagelist);
 	}
 	
 	@GetMapping(value = "/{id}") // não é mais list
-	public ResponseEntity<CategoryDTO> findById(@PathVariable Long id) {
-		CategoryDTO dto = service.findById(id);
+	public ResponseEntity<ProductDTO> findById(@PathVariable Long id) {
+		ProductDTO dto = service.findById(id);
 		return ResponseEntity.ok().body(dto);
 	}
 	
 	@PostMapping
-	public ResponseEntity<CategoryDTO> insert(@RequestBody CategoryDTO dto){
+	public ResponseEntity<ProductDTO> insert(@RequestBody ProductDTO dto){
 		dto = service.insert(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				  .buildAndExpand(dto.getId()).toUri();
@@ -47,7 +47,7 @@ public class CategoryResouce {
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<CategoryDTO> update(@PathVariable Long id, @RequestBody CategoryDTO dto) {
+	public ResponseEntity<ProductDTO> update(@PathVariable Long id, @RequestBody ProductDTO dto) {
 		dto = service.update(id, dto);
 		return ResponseEntity.ok().body(dto);
 	}

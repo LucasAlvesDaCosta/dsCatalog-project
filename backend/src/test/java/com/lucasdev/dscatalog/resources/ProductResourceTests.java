@@ -31,7 +31,7 @@ import com.lucasdev.dscatalog.services.exceptions.DataBaseException;
 import com.lucasdev.dscatalog.services.exceptions.ResourceNotFoundException;
 import com.lucasdev.dscatalog.tests.Factory;
 
-@WebMvcTest(ProductResouce.class)
+@WebMvcTest(ProductResource.class)
 public class ProductResourceTests {
 
 	@Autowired

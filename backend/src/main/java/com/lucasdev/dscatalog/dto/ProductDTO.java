@@ -5,6 +5,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.PastOrPresent;
@@ -52,16 +53,17 @@ public class ProductDTO implements Serializable{
 	}
 	
 	public ProductDTO(Product entity) {
-		this.id = entity.getId();
-		this.name = entity.getName();
-		this.description = entity.getDescription();
-		this.price = entity.getPrice();
-		this.imgUrl = entity.getImgUrl();
-		this.date =entity.getDate();
+		id = entity.getId();
+		name = entity.getName();
+		description = entity.getDescription();
+		price = entity.getPrice();
+		imgUrl = entity.getImgUrl();
+		date =entity.getDate();
+		categories = entity.getCategories().stream().map(x-> new CategoryDTO(x)).collect(Collectors.toList());
 	}
 	
 	public ProductDTO(Product entity, Set<Category> categories) {
-		this(entity);
+		this(entity);//reaproveitando o construtor Product entity
 		categories.forEach(cat -> this.categories.add(new CategoryDTO(cat)));
 	}
 

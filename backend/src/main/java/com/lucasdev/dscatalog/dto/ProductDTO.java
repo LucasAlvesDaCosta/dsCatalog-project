@@ -59,7 +59,7 @@ public class ProductDTO implements Serializable{
 		price = entity.getPrice();
 		imgUrl = entity.getImgUrl();
 		date =entity.getDate();
-		categories = entity.getCategories().stream().map(x-> new CategoryDTO(x)).collect(Collectors.toList());
+		//N+1 Query categories = entity.getCategories().stream().map(x-> new CategoryDTO(x)).collect(Collectors.toList());
 	}
 	
 	public ProductDTO(Product entity, Set<Category> categories) {

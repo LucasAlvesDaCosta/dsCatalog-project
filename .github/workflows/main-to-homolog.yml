@@ -68,4 +68,4 @@ jobs:
         run:  aws elasticbeanstalk update-environment --application-name $EB_APP --environment-name "$EB_ENV" --version-label "$EB_VERSION"
         working-directory: backend
 
-      - run: echo "done main to homolog"
+      - run: echo "done main to homolog ok"

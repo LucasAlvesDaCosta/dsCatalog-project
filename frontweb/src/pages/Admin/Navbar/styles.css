@@ -31,3 +31,25 @@ ul{
 .admin-nav-item p{
     margin-bottom: 0;
 }
+
+@media (min-width: 1200px){
+    ul{
+        justify-content: unset;
+        flex-direction: column;
+    }
+    .admin-nav-container{
+        padding: 0;
+        width: 300px;
+        height: calc(100vh - 70px);
+    }
+
+    .admin-nav-item{
+        border-radius: 0;
+        font-size: 18px;
+        height: 80px;
+        background-color: #fff;
+        border-bottom: 1px #e1e1e1;
+        justify-content: flex-start;
+        padding-left: 40px;
+    }
+}
